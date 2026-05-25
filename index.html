@@ -62,17 +62,19 @@
       <section class="board-surface">
         <section class="timer-ledger" aria-label="Repeating game timers">
           <article class="timer-card timer-turn" data-timer-card="turn">
-            <div class="progress-orb" id="turnOrb" style="--progress: 0deg">
-              <span id="turnTime">02:00</span>
-              <small id="turnState">Ready</small>
+            <div class="timer-focus">
+              <div class="timer-focus-title">
+                <h2>Turn Timer</h2>
+                <p>2 minutes per player turn</p>
+              </div>
+              <div class="progress-orb" id="turnOrb" style="--progress: 0deg">
+                <span id="turnTime">02:00</span>
+                <small id="turnState">Ready</small>
+              </div>
             </div>
             <div class="event-icon green">⏱</div>
             <div class="timer-body">
-              <div class="timer-title-row">
-                <div>
-                  <h2>Turn Timer</h2>
-                  <p>2 minutes per player turn</p>
-                </div>
+              <div class="timer-title-row turn-controls-row">
                 <div class="button-row turn-action-row">
                   <button class="button primary" id="startTurnButton" type="button">
                     <span data-icon="timer"></span>

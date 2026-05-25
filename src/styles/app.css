@@ -343,6 +343,18 @@ p {
   border-top: 1px solid rgba(74, 55, 25, 0.18);
 }
 
+.timer-focus {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+}
+
+.timer-focus-title {
+  display: grid;
+  gap: 3px;
+  text-align: center;
+}
+
 .progress-orb {
   --progress: 0deg;
   --ring: #258f40;
@@ -418,7 +430,13 @@ p {
   align-items: start;
 }
 
+.turn-controls-row {
+  grid-template-columns: auto;
+  justify-content: end;
+}
+
 .timer-body h2,
+.timer-focus-title h2,
 .loan-panel h2,
 .tool-card h2 {
   color: #0d3527;
@@ -429,6 +447,7 @@ p {
 }
 
 .timer-body p,
+.timer-focus-title p,
 .loan-panel p,
 .rule-line,
 .rule-list {
