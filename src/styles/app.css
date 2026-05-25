@@ -430,7 +430,7 @@ p {
   align-items: start;
 }
 
-.turn-controls-row {
+.timer-controls-row {
   grid-template-columns: auto;
   justify-content: end;
 }

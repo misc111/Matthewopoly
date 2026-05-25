@@ -74,7 +74,7 @@
             </div>
             <div class="event-icon green">⏱</div>
             <div class="timer-body">
-              <div class="timer-title-row turn-controls-row">
+              <div class="timer-title-row timer-controls-row">
                 <div class="button-row turn-action-row">
                   <button class="button primary" id="startTurnButton" type="button">
                     <span data-icon="timer"></span>
@@ -109,17 +109,19 @@
           </article>
 
           <article class="timer-card timer-lottery" data-timer-card="lottery">
-            <div class="progress-orb" id="lotteryOrb" style="--progress: 0deg">
-              <span id="lotteryTime">10:00</span>
-              <small id="lotteryStatus">No tickets yet</small>
+            <div class="timer-focus">
+              <div class="timer-focus-title">
+                <h2>Lottery Drawings</h2>
+                <p>Every 10 minutes</p>
+              </div>
+              <div class="progress-orb" id="lotteryOrb" style="--progress: 0deg">
+                <span id="lotteryTime">10:00</span>
+                <small id="lotteryStatus">No tickets yet</small>
+              </div>
             </div>
             <div class="event-icon">🎟</div>
             <div class="timer-body">
-              <div class="timer-title-row">
-                <div>
-                  <h2>Lottery Drawings</h2>
-                  <p>Every 10 minutes</p>
-                </div>
+              <div class="timer-title-row timer-controls-row">
                 <button class="button outline" data-complete-timer="lottery" type="button">
                   Mark Done
                 </button>
@@ -153,17 +155,19 @@
           </article>
 
           <article class="timer-card timer-voting" data-timer-card="voting">
-            <div class="progress-orb" id="votingOrb" style="--progress: 0deg">
-              <span id="votingTime">10:00</span>
-              <small id="votingStatus">Ready</small>
+            <div class="timer-focus">
+              <div class="timer-focus-title">
+                <h2>Voting</h2>
+                <p>Every 10 minutes</p>
+              </div>
+              <div class="progress-orb" id="votingOrb" style="--progress: 0deg">
+                <span id="votingTime">10:00</span>
+                <small id="votingStatus">Ready</small>
+              </div>
             </div>
             <div class="event-icon purple">👥</div>
             <div class="timer-body">
-              <div class="timer-title-row">
-                <div>
-                  <h2>Voting</h2>
-                  <p>Every 10 minutes</p>
-                </div>
+              <div class="timer-title-row timer-controls-row">
                 <button class="button outline purple-outline" data-complete-timer="voting" type="button">
                   Mark Vote Done
                 </button>
@@ -179,17 +183,19 @@
           </article>
 
           <article class="timer-card timer-tax" data-timer-card="propertyTax">
-            <div class="progress-orb" id="propertyTaxOrb" style="--progress: 0deg">
-              <span id="propertyTaxTime">15:00</span>
-              <small id="propertyTaxStatus">Ready</small>
+            <div class="timer-focus">
+              <div class="timer-focus-title">
+                <h2>Property Tax</h2>
+                <p>Every 15 minutes</p>
+              </div>
+              <div class="progress-orb" id="propertyTaxOrb" style="--progress: 0deg">
+                <span id="propertyTaxTime">15:00</span>
+                <small id="propertyTaxStatus">Ready</small>
+              </div>
             </div>
             <div class="event-icon blue">🏛</div>
             <div class="timer-body">
-              <div class="timer-title-row">
-                <div>
-                  <h2>Property Tax</h2>
-                  <p>Every 15 minutes</p>
-                </div>
+              <div class="timer-title-row timer-controls-row">
                 <button class="button outline blue-outline" data-complete-timer="propertyTax" type="button">
                   Mark Taxes Paid
                 </button>
