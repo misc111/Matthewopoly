@@ -512,6 +512,14 @@ p {
   padding-inline: 8px;
 }
 
+.timer-lottery .timer-title-row .button {
+  min-height: 34px;
+}
+
+.timer-lottery .timer-divider {
+  margin: 3px 0;
+}
+
 .turn-player-panel {
   display: grid;
   gap: 7px;
@@ -529,10 +537,11 @@ p {
 
 .ticket-panel {
   display: grid;
-  gap: 5px;
+  gap: 2px;
+  align-items: center;
   border: 1px solid rgba(74, 55, 25, 0.2);
   border-radius: var(--radius);
-  padding: 8px;
+  padding: 5px;
   background: rgba(255, 250, 240, 0.78);
 }
 
@@ -544,28 +553,65 @@ p {
   text-transform: uppercase;
 }
 
+.ticket-panel .panel-title {
+  font-size: 0.74rem;
+}
+
 .ticket-toggle {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
-  min-height: 24px;
+  min-height: 18px;
   border-top: 1px solid rgba(74, 55, 25, 0.14);
   color: #28342f;
-  font-size: 0.72rem;
+  font-size: 0.62rem;
   font-weight: 950;
+  line-height: 1.1;
   text-transform: uppercase;
 }
 
 .ticket-toggle input {
-  width: 28px;
-  height: 18px;
+  width: 18px;
+  height: 14px;
+  min-height: 14px;
   accent-color: var(--felt-3);
+}
+
+.ticket-panel .ticket-toggle input[type="checkbox"] {
+  width: 18px;
+  height: 14px;
+  min-height: 14px;
+}
+
+.ticket-panel .chip-row {
+  align-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.ticket-panel .button.compact {
+  min-height: 22px;
+  padding-inline: 8px;
+}
+
+.ticket-panel .soft-output {
+  min-height: 18px;
+  max-height: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.timer-lottery .ticket-panel .soft-output {
+  min-height: 18px;
+  max-height: 20px;
+  font-size: 0.62rem;
 }
 
 .cash-chip {
   display: inline-grid;
-  min-width: 54px;
-  min-height: 28px;
+  min-width: 44px;
+  min-height: 20px;
   place-items: center;
   border: 2px dashed rgba(255, 255, 255, 0.7);
   border-radius: 999px;
@@ -573,7 +619,7 @@ p {
   background: linear-gradient(180deg, #3d9c54, #1f6530);
   box-shadow: inset 0 0 0 2px rgba(27, 57, 21, 0.48);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 0.95rem;
+  font-size: 0.72rem;
   font-weight: 900;
 }
 
@@ -583,13 +629,14 @@ p {
 
 .soft-output {
   display: block;
-  min-height: 24px;
+  min-height: 26px;
   border-radius: 6px;
-  padding: 5px 7px;
+  padding: 4px 6px;
   color: #5d665f;
   background: rgba(20, 33, 28, 0.06);
-  font-size: 0.72rem;
+  font-size: 0.62rem;
   font-weight: 800;
+  line-height: 1.15;
 }
 
 .rule-list {
