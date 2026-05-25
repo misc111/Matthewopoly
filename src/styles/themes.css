@@ -1,0 +1,85 @@
+:root {
+  --body-bg:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 26rem),
+    linear-gradient(90deg, rgba(16, 10, 4, 0.72), transparent 13%, transparent 87%, rgba(16, 10, 4, 0.72)),
+    linear-gradient(135deg, #2f1b0f, #0b3a2c 38%, #071b17 100%);
+  --shell-bg:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.08)),
+    radial-gradient(circle at 50% -20%, rgba(255, 232, 150, 0.24), transparent 26rem),
+    linear-gradient(180deg, var(--felt-2) 0%, #05251e 100%);
+  --shell-border: #241609;
+  --shell-ring: #b38332;
+  --shell-inner-ring: rgba(255, 220, 123, 0.2);
+  --surface-bg:
+    linear-gradient(180deg, rgba(255, 248, 232, 0.34), rgba(255, 248, 232, 0.1)),
+    #0a3428;
+  --paper-bg:
+    radial-gradient(circle at 50% -12%, rgba(255, 255, 255, 0.88), transparent 16rem),
+    linear-gradient(180deg, #fffdf6, #f8efdd);
+}
+
+:root[data-theme="midnight"],
+.app-shell[data-theme="midnight"] {
+  --felt: #071f2d;
+  --felt-2: #0c3148;
+  --felt-3: #2d7da6;
+  --gold: #81c7d4;
+  --gold-2: #d6f6ff;
+  --paper: #f5fbff;
+  --paper-2: #e4eef4;
+  --ink: #102431;
+  --muted: #5d6a73;
+  --line: rgba(23, 57, 76, 0.2);
+  --purple: #6b5ea8;
+  --blue: #1e78a4;
+  --body-bg:
+    radial-gradient(circle at 52% 0%, rgba(129, 199, 212, 0.22), transparent 24rem),
+    linear-gradient(90deg, rgba(3, 9, 15, 0.78), transparent 14%, transparent 86%, rgba(3, 9, 15, 0.78)),
+    linear-gradient(135deg, #07111b, #0e3147 44%, #05080f 100%);
+  --shell-bg:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.08)),
+    radial-gradient(circle at 50% -20%, rgba(129, 199, 212, 0.24), transparent 26rem),
+    linear-gradient(180deg, #0c3148 0%, #071622 100%);
+  --shell-border: #05080f;
+  --shell-ring: #67b7c7;
+  --shell-inner-ring: rgba(214, 246, 255, 0.16);
+  --surface-bg:
+    linear-gradient(180deg, rgba(245, 251, 255, 0.22), rgba(245, 251, 255, 0.08)),
+    #0b2435;
+  --paper-bg:
+    radial-gradient(circle at 50% -12%, rgba(255, 255, 255, 0.92), transparent 16rem),
+    linear-gradient(180deg, #f8fcff, #e9f2f7);
+}
+
+:root[data-theme="tycoon"],
+.app-shell[data-theme="tycoon"] {
+  --felt: #30220a;
+  --felt-2: #5b3a0d;
+  --felt-3: #a56718;
+  --gold: #c28432;
+  --gold-2: #ffe2a1;
+  --paper: #fff8e8;
+  --paper-2: #f3dfbd;
+  --ink: #21170a;
+  --muted: #706248;
+  --line: rgba(91, 58, 13, 0.24);
+  --purple: #7c4565;
+  --blue: #2b6f81;
+  --body-bg:
+    radial-gradient(circle at 50% 0%, rgba(255, 226, 161, 0.22), transparent 24rem),
+    linear-gradient(90deg, rgba(26, 13, 2, 0.72), transparent 13%, transparent 87%, rgba(26, 13, 2, 0.72)),
+    linear-gradient(135deg, #3b2108, #785016 43%, #1d1004 100%);
+  --shell-bg:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.08)),
+    radial-gradient(circle at 50% -20%, rgba(255, 226, 161, 0.34), transparent 26rem),
+    linear-gradient(180deg, #5b3a0d 0%, #261705 100%);
+  --shell-border: #2a1603;
+  --shell-ring: #e0a84e;
+  --shell-inner-ring: rgba(255, 226, 161, 0.2);
+  --surface-bg:
+    linear-gradient(180deg, rgba(255, 248, 232, 0.36), rgba(255, 248, 232, 0.1)),
+    #52330a;
+  --paper-bg:
+    radial-gradient(circle at 50% -12%, rgba(255, 255, 255, 0.88), transparent 16rem),
+    linear-gradient(180deg, #fffaf0, #efd9ad);
+}
