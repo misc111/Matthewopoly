@@ -305,6 +305,25 @@ p {
   filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.4));
 }
 
+.mobile-subtitle,
+.mobile-menu-button {
+  display: none;
+}
+
+.mobile-menu-button {
+  border: 0;
+  background: transparent;
+}
+
+.mobile-menu-button span {
+  display: block;
+  width: 28px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffe89c, #b77a24);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
 .game-clock {
   display: grid;
   justify-items: center;
@@ -524,7 +543,7 @@ p {
 .timer-ledger {
   grid-area: timers;
   display: grid;
-  grid-template-rows: repeat(3, minmax(0, 1fr));
+  grid-template-rows: 222px 203px minmax(0, 1fr);
   padding: 12px 18px;
 }
 
@@ -532,7 +551,7 @@ p {
   display: grid;
   grid-template-columns: 184px 46px minmax(0, 1fr) 220px;
   gap: 14px;
-  align-items: center;
+  align-items: start;
   min-height: 0;
   padding: 8px 0;
 }
@@ -583,6 +602,21 @@ p {
 
 .timer-tax .progress-orb {
   --ring: var(--blue);
+  width: 138px;
+  margin-top: 4px;
+}
+
+.timer-tax .progress-orb span {
+  font-size: 1.85rem;
+}
+
+.timer-tax .progress-orb small {
+  font-size: 0.83rem;
+}
+
+.timer-tax .progress-orb::after {
+  left: 12px;
+  bottom: 24px;
 }
 
 .timer-card.is-due {
@@ -624,6 +658,11 @@ p {
   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.22), 0 8px 14px rgba(0, 0, 0, 0.14);
   font-size: 1rem;
   font-weight: 950;
+}
+
+.timer-card .event-icon {
+  align-self: start;
+  margin-top: -8px;
 }
 
 .event-icon.purple {
@@ -712,6 +751,18 @@ p {
 
 #propertyTaxMirror {
   color: var(--blue);
+  font-size: 2.24rem;
+}
+
+.timer-tax .timer-divider {
+  margin: 5px 0 4px;
+}
+
+.timer-tax .rule-line {
+  max-width: 440px;
+  margin-top: 4px;
+  font-size: 0.7rem;
+  line-height: 1.2;
 }
 
 .rule-line {
@@ -1509,8 +1560,6 @@ input:focus {
   }
 
   .topbar,
-  .brand-block,
-  .timer-card,
   .timer-title-row,
   .loan-card,
   .loan-form,
@@ -1525,6 +1574,22 @@ input:focus {
   .topbar {
     gap: 10px;
     padding: 64px 10px 12px;
+    border-bottom-color: rgba(216, 169, 76, 0.72);
+  }
+
+  .topbar,
+  .board-surface,
+  .table-footer {
+    justify-self: center;
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+  }
+
+  .brand-block {
+    grid-template-columns: 72px minmax(0, 1fr) 44px;
+    gap: 10px;
+    align-items: center;
+    min-height: 78px;
   }
 
   .monogram {
@@ -1535,14 +1600,38 @@ input:focus {
 
   .brand-block h1 {
     max-width: calc(100vw - 56px);
-    font-size: 1.22rem;
+    font-size: 1.56rem;
     line-height: 1.08;
     overflow-wrap: anywhere;
   }
 
   .brand-block p {
     max-width: calc(100vw - 56px);
-    font-size: 0.82rem;
+    font-size: 1rem;
+  }
+
+  .desktop-title-extra,
+  .desktop-subtitle,
+  .brand-token {
+    display: none;
+  }
+
+  .mobile-subtitle,
+  .mobile-menu-button {
+    display: inline-flex;
+  }
+
+  .mobile-subtitle {
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mobile-menu-button {
+    justify-self: end;
+    flex-direction: column;
+    gap: 5px;
+    margin-right: 18px;
+    padding: 8px;
   }
 
   .top-actions,
@@ -1568,13 +1657,118 @@ input:focus {
     font-size: 0.82rem;
   }
 
+  .asset-board-right {
+    top: 170px;
+    right: -98px;
+    width: 178px;
+    clip-path: inset(92px 0 0 0);
+  }
+
+  .asset-car-top {
+    display: block;
+    top: -18px;
+    right: -34px;
+    width: 104px;
+  }
+
+  .timer-ledger {
+    gap: 8px;
+    padding: 10px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .timer-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 84px 36px minmax(0, 1fr) 12px;
+    gap: 6px;
+    align-items: center;
+    min-height: 136px;
+    padding: 14px 10px;
+    border: 1px solid rgba(74, 55, 25, 0.18);
+    border-radius: var(--radius);
+    background: rgba(255, 253, 246, 0.78);
+    width: 100%;
+    min-width: 0;
+  }
+
+  .timer-card + .timer-card {
+    border-top: 1px solid rgba(74, 55, 25, 0.18);
+  }
+
+  .timer-card::after {
+    color: #10271d;
+    content: "›";
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.35rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .timer-card .event-icon {
+    margin-top: 0;
+    width: 36px;
+    height: 36px;
+  }
+
+  .timer-card .event-icon [data-icon] {
+    width: 19px;
+    height: 19px;
+  }
+
   .timer-card:not(.timer-lottery) .timer-body {
     grid-column: auto;
   }
 
   .progress-orb {
-    width: 138px;
-    justify-self: start;
+    width: 84px;
+    justify-self: center;
+  }
+
+  .progress-orb span {
+    font-size: 1.36rem;
+  }
+
+  .progress-orb small {
+    margin-top: 4px;
+    font-size: 0.66rem;
+  }
+
+  .progress-orb::after {
+    left: 7px;
+    bottom: 16px;
+  }
+
+  .timer-tax .progress-orb {
+    width: 84px;
+    margin-top: 0;
+  }
+
+  .timer-body h2 {
+    font-size: 0.96rem;
+  }
+
+  .timer-divider {
+    margin: 8px 0 7px;
+  }
+
+  .timer-body .overline {
+    font-size: 0.66rem;
+    white-space: nowrap;
+  }
+
+  .timer-body > strong,
+  #lotteryMirror,
+  #votingMirror,
+  #propertyTaxMirror {
+    font-size: 1.88rem;
+  }
+
+  .timer-card .button,
+  .ticket-panel,
+  .timer-card .rule-line {
+    display: none;
   }
 
   .ticket-panel {

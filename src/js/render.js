@@ -1,9 +1,9 @@
-import { TIMER_CONFIG, TIMER_KEYS } from "./config.js";
+import { TIMER_CONFIG, TIMER_KEYS } from "./config.js?v=20260527c";
 import { byId } from "./dom.js";
 import { escapeHtml, formatClock, formatTime, money } from "./formatters.js";
-import { svgIcon } from "./icons.js";
-import { nextDueTableTimer, timerProgress, timerStatus } from "./selectors.js";
-import { state } from "./state.js";
+import { svgIcon } from "./icons.js?v=20260527c";
+import { nextDueTableTimer, timerProgress, timerStatus } from "./selectors.js?v=20260527c";
+import { state } from "./state.js?v=20260527c";
 
 function applyTheme(els) {
   document.documentElement.dataset.theme = "classic";
@@ -65,7 +65,7 @@ function renderLoans(els) {
       </div>
       <div class="loan-due">
         <span>Due In</span>
-        <strong>${formatTime(secondsLeft)}</strong>
+        <strong>${formatClock(secondsLeft)}</strong>
         <small>Due: Today, ${escapeHtml(loan.dueLabel || formatDueAt(loan.dueAt))}</small>
       </div>
       <div class="loan-interest">
@@ -98,7 +98,9 @@ function renderNextAction(els) {
 function renderCalculators(els) {
   const houses = Number(state.repairs.houses || 0);
   const hotels = Number(state.repairs.hotels || 0);
-  const repairCost = houses * 250 + hotels * 1000;
+  const repairCost = Number.isFinite(state.repairs.costOverride)
+    ? state.repairs.costOverride
+    : houses * 250 + hotels * 1000;
   const caught = Number(state.jailCaught || 0);
   els.housesCount.textContent = String(houses);
   els.hotelsCount.textContent = String(hotels);

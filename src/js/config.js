@@ -1,5 +1,5 @@
 export const SECOND = 1000;
-export const STORAGE_KEY = "matthew-opoly-timers-v6";
+export const STORAGE_KEY = "matthew-opoly-timers-v7";
 
 export const TIMER_CONFIG = {
   lottery: { label: "Lottery Drawing", duration: 10 * 60, idle: "No tickets yet" },

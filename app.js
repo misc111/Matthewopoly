@@ -1,11 +1,11 @@
-import { SECOND } from "./src/js/config.js";
-import { tick } from "./src/js/actions.js";
+import { SECOND } from "./src/js/config.js?v=20260527c";
+import { tick } from "./src/js/actions.js?v=20260527c";
 import { installAlertUnlock, playDueAlert } from "./src/js/alerts.js";
 import { cacheElements, clearTransientForms } from "./src/js/dom.js";
-import { bindEvents } from "./src/js/events.js";
-import { installIcons } from "./src/js/icons.js?v=20260527b";
-import { render } from "./src/js/render.js";
-import { loadState, saveState } from "./src/js/state.js";
+import { bindEvents } from "./src/js/events.js?v=20260527c";
+import { installIcons } from "./src/js/icons.js?v=20260527c";
+import { render } from "./src/js/render.js?v=20260527c";
+import { loadState, saveState } from "./src/js/state.js?v=20260527c";
 
 const els = cacheElements();
 

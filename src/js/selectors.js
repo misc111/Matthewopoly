@@ -1,5 +1,5 @@
-import { GLOBAL_TIMER_KEYS, TIMER_CONFIG } from "./config.js";
-import { state } from "./state.js";
+import { GLOBAL_TIMER_KEYS, TIMER_CONFIG } from "./config.js?v=20260527c";
+import { state } from "./state.js?v=20260527c";
 
 export function hasLotteryTickets() {
   return state.tickets.tobl || state.tickets.cc;

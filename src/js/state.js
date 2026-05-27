@@ -1,4 +1,4 @@
-import { STORAGE_KEY, TIMER_CONFIG } from "./config.js";
+import { STORAGE_KEY, TIMER_CONFIG } from "./config.js?v=20260527c";
 
 function createTimerState() {
   return {
@@ -51,7 +51,7 @@ export function createInitialState() {
     tickets: { tobl: true, cc: true },
     loans: createReferenceLoans(now),
     loanMessage: "",
-    repairs: { houses: 1, hotels: 1 },
+    repairs: { houses: 3, hotels: 1, costOverride: 1250 },
     jailCaught: 2,
   };
 }

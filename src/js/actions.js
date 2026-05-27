@@ -1,6 +1,6 @@
-import { GLOBAL_TIMER_KEYS, SECOND, TIMER_CONFIG } from "./config.js";
-import { state, resetState } from "./state.js";
-import { hasLotteryTickets } from "./selectors.js";
+import { GLOBAL_TIMER_KEYS, SECOND, TIMER_CONFIG } from "./config.js?v=20260527c";
+import { state, resetState } from "./state.js?v=20260527c";
+import { hasLotteryTickets } from "./selectors.js?v=20260527c";
 
 export function setRunning(running) {
   state.running = running;
@@ -60,6 +60,7 @@ export function clearLoan(id) {
 
 export function adjustRepair(kind, delta) {
   if (!["houses", "hotels"].includes(kind)) return;
+  delete state.repairs.costOverride;
   state.repairs[kind] = Math.max(0, Number(state.repairs[kind] || 0) + delta);
 }
 

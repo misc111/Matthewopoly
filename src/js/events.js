@@ -8,7 +8,7 @@ import {
   setAlertsMuted,
   setRunning,
   setTicket,
-} from "./actions.js";
+} from "./actions.js?v=20260527c";
 
 export function bindEvents(els, afterChange, renderOnly) {
   document.getElementById("startAllButton").addEventListener("click", () => {
