@@ -9,13 +9,12 @@
   </head>
   <body>
     <main class="app-shell" id="appShell" data-theme="classic">
-      <img class="table-die die-top" src="./assets/die-single.png" alt="" aria-hidden="true" />
-      <img class="table-die dice-bottom" src="./assets/dice-pair.png" alt="" aria-hidden="true" />
-      <div class="table-prop prop-hat" aria-hidden="true">♜</div>
-      <div class="table-prop prop-car" aria-hidden="true">▰</div>
-      <div class="table-prop prop-money" aria-hidden="true">$500</div>
-      <div class="table-prop prop-board-left" aria-hidden="true"></div>
-      <div class="table-prop prop-board-right" aria-hidden="true"></div>
+      <img class="prop-image prop-board asset-board-left" src="./assets/props/board-left.png" alt="" aria-hidden="true" />
+      <img class="prop-image prop-board asset-board-right" src="./assets/props/board-right.png" alt="" aria-hidden="true" />
+      <img class="prop-image asset-die-top" src="./assets/props/die-top-single.png" alt="" aria-hidden="true" />
+      <img class="prop-image asset-car-top" src="./assets/props/car-top.png" alt="" aria-hidden="true" />
+      <img class="prop-image asset-money-hat" src="./assets/props/money-hat.png" alt="" aria-hidden="true" />
+      <img class="prop-image asset-dice-bottom" src="./assets/props/dice-bottom.png" alt="" aria-hidden="true" />
 
       <header class="topbar">
         <section class="brand-block" aria-label="Game title">
@@ -85,7 +84,7 @@
               <div class="timer-divider"></div>
               <span class="overline">Next Drawing In</span>
               <strong id="lotteryMirror">10:00</strong>
-              <p class="rule-line"><span></span>Draw only if someone has a ticket. TOBL uses 4 digits. Crazy Cash uses 8 digits.</p>
+              <p class="rule-line"><span></span><b>Rules:</b> Draw one TOBL 4-digit and one Crazy Cash 8-digit ticket. Winners collect the corresponding jackpot.</p>
               <small class="timer-status" id="lotteryStatus">No tickets yet</small>
             </div>
             <aside class="ticket-panel" aria-label="Ticket pools">
@@ -132,10 +131,7 @@
               <div class="timer-divider"></div>
               <span class="overline">Next Vote In</span>
               <strong id="votingMirror">10:00</strong>
-              <ul class="rule-list">
-                <li>Only speak if voting for someone else.</li>
-                <li>Ties mean nothing changes.</li>
-              </ul>
+              <p class="rule-line purple-rule"><span></span><b>Rules:</b> Start bidding phase. All players may vote on active proposals. Majority rules.</p>
               <small class="timer-status" id="votingStatus">Ready</small>
             </div>
           </article>
@@ -160,7 +156,7 @@
               <div class="timer-divider"></div>
               <span class="overline">Next Property Tax In</span>
               <strong id="propertyTaxMirror">15:00</strong>
-              <p class="rule-line"><span></span>Bank-president caps: $25 per property, $25 per house, and $125 per hotel.</p>
+              <p class="rule-line blue-rule"><span></span><b>Rules:</b> Pay 10% of net worth (cash + properties value - loans). Minimum payment is $200.</p>
               <div class="tax-split">
                 <span>President 50%</span>
                 <span>Governor 35%</span>
@@ -176,7 +172,7 @@
             <div>
               <span class="loan-icon" aria-hidden="true">♜</span>
               <h2>Active Loan Timers</h2>
-              <p>Pay bank loans back within 1 hour.</p>
+              <p>Interest accrues continuously. Pay on time to avoid penalties.</p>
             </div>
             <span class="rule-pill">5% interest</span>
           </div>
@@ -271,10 +267,7 @@
             <span class="sr-only" id="nextAction">Start the table clock</span>
             <span class="sr-only" id="loanCount">0 active loans</span>
             <div class="mascot" aria-hidden="true">
-              <span class="mascot-hat">▔</span>
-              <span class="mascot-head"></span>
-              <span class="mascot-body"></span>
-              <span class="mascot-cane"></span>
+              <img src="./assets/props/rule-mascot.png" alt="" />
             </div>
           </article>
         </section>
