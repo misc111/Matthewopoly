@@ -124,6 +124,7 @@ p {
 }
 
 .asset-car-top {
+  display: none;
   top: -36px;
   right: -36px;
   width: 122px;
