@@ -3,7 +3,7 @@ import { tick } from "./src/js/actions.js";
 import { installAlertUnlock, playDueAlert } from "./src/js/alerts.js";
 import { cacheElements, clearTransientForms } from "./src/js/dom.js";
 import { bindEvents } from "./src/js/events.js";
-import { installIcons } from "./src/js/icons.js";
+import { installIcons } from "./src/js/icons.js?v=20260527b";
 import { render } from "./src/js/render.js";
 import { loadState, saveState } from "./src/js/state.js";
 

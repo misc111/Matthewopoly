@@ -628,13 +628,25 @@ p {
 
 .event-icon.purple {
   background: linear-gradient(180deg, #8d56a0, #563069);
-  font-size: 0.72rem;
-  letter-spacing: -2px;
 }
 
 .event-icon.blue {
   background: linear-gradient(180deg, #2d83bd, #155b8c);
-  font-size: 1.35rem;
+}
+
+.event-icon [data-icon] {
+  width: 24px;
+  height: 24px;
+}
+
+.tool-icon[data-icon] {
+  width: 25px;
+  height: 25px;
+  padding: 5px;
+}
+
+.loan-icon[data-icon] {
+  padding: 0;
 }
 
 .timer-body {
@@ -822,10 +834,33 @@ p {
 
 .ticket-toggle input[type="checkbox"] {
   justify-self: end;
-  width: 34px;
-  height: 20px;
+  position: relative;
+  width: 40px;
+  height: 22px;
   min-height: 20px;
-  accent-color: var(--green);
+  appearance: none;
+  border: 1px solid rgba(27, 82, 35, 0.55);
+  border-radius: 999px;
+  padding: 0;
+  background: linear-gradient(180deg, #3f9d4e, #155a26);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24), 0 2px 4px rgba(42, 32, 11, 0.18);
+}
+
+.ticket-toggle input[type="checkbox"]::after {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fffaf0;
+  content: "";
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+}
+
+.timer-lottery .ticket-panel {
+  align-self: start;
+  margin-top: -7px;
 }
 
 .chip-row {
@@ -857,7 +892,7 @@ p {
   grid-template-rows: auto auto auto;
   gap: 14px;
   min-height: 0;
-  padding: 20px 18px;
+  padding: 14px 18px 20px;
 }
 
 .section-heading {
@@ -865,13 +900,13 @@ p {
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 10px;
   align-items: start;
-  padding-bottom: 11px;
+  padding-bottom: 0;
   border-bottom: 1px solid rgba(74, 55, 25, 0.18);
 }
 
 .section-heading > div {
   display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
+  grid-template-columns: 30px minmax(0, 1fr);
   gap: 4px 12px;
   align-items: center;
 }
@@ -882,13 +917,13 @@ p {
 }
 
 .loan-icon {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   border-radius: 4px;
   color: #3b2b0e;
   background: transparent;
   box-shadow: none;
-  font-size: 1.65rem;
+  font-size: 1.18rem;
 }
 
 .rule-pill {
@@ -908,7 +943,8 @@ p {
 .loan-list {
   display: grid;
   align-content: start;
-  gap: 8px;
+  gap: 16px;
+  padding-bottom: 22px;
   overflow: auto;
 }
 
@@ -1285,10 +1321,10 @@ input:focus {
 
 .mascot {
   position: absolute;
-  right: 14px;
-  bottom: -5px;
-  width: 112px;
-  height: 126px;
+  right: 8px;
+  bottom: -16px;
+  width: 100px;
+  height: 150px;
 }
 
 .mascot img {

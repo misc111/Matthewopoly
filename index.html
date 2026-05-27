@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Matthew Opoly Timer Table</title>
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
-    <link rel="stylesheet" href="./styles.css?v=20260527" />
+    <link rel="stylesheet" href="./styles.css?v=20260527b" />
   </head>
   <body>
     <main class="app-shell" id="appShell" data-theme="classic">
@@ -73,7 +73,7 @@
               <span id="lotteryTime">10:00</span>
               <small>of 10:00</small>
             </div>
-            <div class="event-icon" aria-hidden="true">$</div>
+            <div class="event-icon" aria-hidden="true"><span data-icon="ticket"></span></div>
             <div class="timer-body">
               <div class="timer-title-row">
                 <div>
@@ -106,7 +106,7 @@
               </div>
               <div class="chip-row">
                 <span class="cash-chip">$250</span>
-                <span class="cash-chip gold-chip">$1,000</span>
+                <span class="cash-chip gold-chip">$1000</span>
               </div>
             </aside>
           </article>
@@ -116,7 +116,7 @@
               <span id="votingTime">10:00</span>
               <small>of 10:00</small>
             </div>
-            <div class="event-icon purple" aria-hidden="true">●●●</div>
+            <div class="event-icon purple" aria-hidden="true"><span data-icon="users"></span></div>
             <div class="timer-body">
               <div class="timer-title-row">
                 <div>
@@ -138,15 +138,15 @@
 
           <article class="timer-card timer-tax" data-timer-card="propertyTax">
             <div class="progress-orb" id="propertyTaxOrb" style="--progress: 0deg">
-              <span id="propertyTaxTime">15:00</span>
-              <small>of 15:00</small>
+              <span id="propertyTaxTime">05:00</span>
+              <small>of 05:00</small>
             </div>
-            <div class="event-icon blue" aria-hidden="true">♜</div>
+            <div class="event-icon blue" aria-hidden="true"><span data-icon="landmark"></span></div>
             <div class="timer-body">
               <div class="timer-title-row">
                 <div>
                   <h2>Property Tax</h2>
-                  <p>Every 15 minutes</p>
+                  <p>Every 5 minutes</p>
                 </div>
                 <button class="button outline blue-outline" data-complete-timer="propertyTax" type="button">
                   <span data-icon="check-circle"></span>
@@ -155,7 +155,7 @@
               </div>
               <div class="timer-divider"></div>
               <span class="overline">Next Property Tax In</span>
-              <strong id="propertyTaxMirror">15:00</strong>
+              <strong id="propertyTaxMirror">05:00</strong>
               <p class="rule-line blue-rule"><span></span><b>Rules:</b> Pay 10% of net worth (cash + properties value - loans). Minimum payment is $200.</p>
               <div class="tax-split">
                 <span>President 50%</span>
@@ -170,7 +170,7 @@
         <aside class="loan-panel" aria-label="Loans">
           <div class="section-heading">
             <div>
-              <span class="loan-icon" aria-hidden="true">♜</span>
+              <span class="loan-icon" data-icon="landmark" aria-hidden="true"></span>
               <h2>Active Loan Timers</h2>
               <p>Interest accrues continuously. Pay on time to avoid penalties.</p>
             </div>
@@ -203,7 +203,7 @@
         <section class="bottom-tools" aria-label="Calculators and notes">
           <article class="tool-card repair-card">
             <div class="tool-heading">
-              <span class="tool-icon green-tool" aria-hidden="true">◆</span>
+              <span class="tool-icon green-tool" data-icon="wrench" aria-hidden="true"></span>
               <h2>Street Repairs Calculator</h2>
               <span class="info-dot">i</span>
             </div>
@@ -230,7 +230,7 @@
 
           <article class="tool-card jail-card">
             <div class="tool-heading">
-              <span class="tool-icon gold-tool" aria-hidden="true">▥</span>
+              <span class="tool-icon gold-tool" data-icon="columns" aria-hidden="true"></span>
               <h2>Jail Caught Penalty</h2>
               <span class="info-dot">i</span>
             </div>
@@ -253,13 +253,13 @@
 
           <article class="tool-card notes-card" id="rulesPanel">
             <div class="tool-heading">
-              <span class="tool-icon dark-tool" aria-hidden="true">◆</span>
+              <span class="tool-icon dark-tool" data-icon="hammer" aria-hidden="true"></span>
               <h2>Quick Rule Notes</h2>
             </div>
             <div class="notes-grid">
               <span>All timers run continuously in real time.</span>
-              <span>Property Tax uses the house rule caps.</span>
-              <span>Skip / Mark Done resets the interval.</span>
+              <span>Property Tax is 10% of net worth (min $200).</span>
+              <span>Skip / Mark Done will reset the interval.</span>
               <span>Late loans may be subject to house rules.</span>
               <span>Loans accrue 5% interest until repaid.</span>
               <span>Have fun and play fair.</span>
@@ -287,6 +287,6 @@
       </footer>
     </main>
 
-    <script type="module" src="./app.js"></script>
+    <script type="module" src="./app.js?v=20260527b"></script>
   </body>
 </html>

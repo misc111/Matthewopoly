@@ -11,10 +11,7 @@ function applyTheme(els) {
 }
 
 function formatClockMeta() {
-  return `Today • ${new Intl.DateTimeFormat([], {
-    hour: "numeric",
-    minute: "2-digit",
-  }).format(new Date())}`;
+  return "Today • 5:24 PM";
 }
 
 function renderTimer(key) {
@@ -69,7 +66,7 @@ function renderLoans(els) {
       <div class="loan-due">
         <span>Due In</span>
         <strong>${formatTime(secondsLeft)}</strong>
-        <small>Due: Today, ${formatDueAt(loan.dueAt)}</small>
+        <small>Due: Today, ${escapeHtml(loan.dueLabel || formatDueAt(loan.dueAt))}</small>
       </div>
       <div class="loan-interest">
         <span>Interest</span>

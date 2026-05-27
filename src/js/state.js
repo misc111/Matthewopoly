@@ -17,6 +17,7 @@ function createReferenceLoans(now = Date.now()) {
       payoff: 1575,
       createdAt: now - 27 * 60 * 1000,
       dueAt: now + (1 * 60 * 60 + 32 * 60 + 15) * 1000,
+      dueLabel: "6:56 PM",
     },
     {
       id: "reference-maya",
@@ -25,6 +26,7 @@ function createReferenceLoans(now = Date.now()) {
       payoff: 3150,
       createdAt: now - 41 * 60 * 1000,
       dueAt: now + (18 * 60 + 42) * 1000,
+      dueLabel: "5:42 PM",
     },
     {
       id: "reference-jordan",
@@ -33,6 +35,7 @@ function createReferenceLoans(now = Date.now()) {
       payoff: 2100,
       createdAt: now - 57 * 60 * 1000,
       dueAt: now + (2 * 60 + 31) * 1000,
+      dueLabel: "5:26 PM",
     },
   ];
 }
