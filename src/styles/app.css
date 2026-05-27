@@ -125,10 +125,11 @@ p {
 
 .asset-car-top {
   display: block;
-  top: 2px;
-  right: 42px;
+  top: -28px;
+  right: 10px;
   width: 132px;
   transform: rotate(-11deg);
+  z-index: 8;
 }
 
 .asset-board-left {
