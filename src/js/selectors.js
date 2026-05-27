@@ -14,7 +14,7 @@ export function timerProgress(key) {
 export function timerStatus(key) {
   if (key === "lottery" && !hasLotteryTickets()) return "No tickets";
   if (state.timers[key].remaining <= 0) return "Due now";
-  return state.running || (key === "turn" && state.timers.turn.running) ? "Running" : TIMER_CONFIG[key].idle;
+  return state.running ? "Running" : TIMER_CONFIG[key].idle;
 }
 
 export function nextDueTableTimer() {

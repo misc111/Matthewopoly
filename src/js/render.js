@@ -1,27 +1,20 @@
-import { TIMER_CONFIG, TIMER_KEYS, THEMES } from "./config.js";
+import { TIMER_CONFIG, TIMER_KEYS } from "./config.js";
 import { byId } from "./dom.js";
 import { escapeHtml, formatClock, formatTime, money } from "./formatters.js";
+import { svgIcon } from "./icons.js";
 import { nextDueTableTimer, timerProgress, timerStatus } from "./selectors.js";
 import { state } from "./state.js";
 
 function applyTheme(els) {
-  const theme = THEMES[state.theme] ? state.theme : "classic";
-  document.documentElement.dataset.theme = theme;
-  els.appShell.dataset.theme = theme;
-  els.themeButtons.querySelectorAll("[data-theme]").forEach((button) => {
-    const isActive = button.dataset.theme === state.theme;
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
-  });
+  document.documentElement.dataset.theme = "classic";
+  els.appShell.dataset.theme = "classic";
 }
 
-function updateCalculators(els) {
-  const defraud = Number(els.defraudAmount.value) || 0;
-  els.caughtTotal.textContent = `Return ${money(defraud)}, jail bailout is ${money(defraud * 10)}`;
-
-  const spaces = Number(els.taxSpaces.value) || 0;
-  const rate = Number(els.taxRate.value) || 0;
-  els.spaceTaxTotal.textContent = `${money(spaces * rate)} total tax`;
+function formatClockMeta() {
+  return `Today • ${new Intl.DateTimeFormat([], {
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(new Date())}`;
 }
 
 function renderTimer(key) {
@@ -29,7 +22,7 @@ function renderTimer(key) {
   const orb = byId(`${key}Orb`) || card?.querySelector(".progress-orb");
   const time = byId(`${key}Time`);
   const mirror = byId(`${key}Mirror`);
-  const status = byId(`${key}Status`) || byId("turnState");
+  const status = byId(`${key}Status`);
   if (orb) orb.style.setProperty("--progress", `${timerProgress(key)}deg`);
   if (time) time.textContent = formatTime(state.timers[key].remaining);
   if (mirror) mirror.textContent = formatTime(state.timers[key].remaining);
@@ -37,27 +30,11 @@ function renderTimer(key) {
   if (card) card.classList.toggle("is-due", state.timers[key].remaining <= 0);
 }
 
-function renderPlayers(els) {
-  els.playerRail.innerHTML = "";
-  if (!state.players.length) {
-    const empty = document.createElement("span");
-    empty.className = "soft-output";
-    empty.textContent = "No players yet.";
-    els.playerRail.append(empty);
-    els.currentTurnLabel.textContent = "No player selected";
-    return;
-  }
-
-  state.players.forEach((player, index) => {
-    const chip = document.createElement("button");
-    chip.type = "button";
-    chip.className = `player-chip${index === state.activePlayerIndex ? " is-active" : ""}`;
-    chip.dataset.playerIndex = String(index);
-    chip.textContent = player;
-    els.playerRail.append(chip);
-  });
-
-  els.currentTurnLabel.textContent = state.players[state.activePlayerIndex] || "No player selected";
+function formatDueAt(timestamp) {
+  return new Intl.DateTimeFormat([], {
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(new Date(timestamp));
 }
 
 function renderLoans(els) {
@@ -92,28 +69,23 @@ function renderLoans(els) {
       <div class="loan-due">
         <span>Due In</span>
         <strong>${formatTime(secondsLeft)}</strong>
+        <small>Due: Today, ${formatDueAt(loan.dueAt)}</small>
       </div>
       <div class="loan-interest">
         <span>Interest</span>
         <strong>5%</strong>
-        <span>${money(loan.payoff - loan.principal)}</span>
+        <small>(${money(loan.payoff - loan.principal)})</small>
       </div>
-      <button class="text-button" type="button" data-clear-loan="${loan.id}">Paid</button>
+      <button class="loan-menu" type="button" data-clear-loan="${loan.id}" aria-label="Mark ${escapeHtml(loan.player)} loan paid">⋮</button>
     `;
     if (secondsLeft <= 0) {
-      card.querySelector(".loan-due").innerHTML = "<span>Deadline</span><strong>Bankrupt</strong>";
+      card.querySelector(".loan-due").innerHTML = "<span>Deadline</span><strong>Bankrupt</strong><small>Due now</small>";
     }
     els.loanList.append(card);
   });
 }
 
 function renderNextAction(els) {
-  const dueTurn = state.timers.turn.running && state.timers.turn.remaining <= 0;
-  if (dueTurn) {
-    els.nextAction.textContent = `${state.players[state.activePlayerIndex] || "Current player"} turn is over`;
-    return;
-  }
-
   const next = nextDueTableTimer();
   if (!next) {
     els.nextAction.textContent = "No table events until someone buys a lottery ticket";
@@ -126,16 +98,33 @@ function renderNextAction(els) {
   els.nextAction.textContent = `${TIMER_CONFIG[next.key].label} in ${formatTime(next.remaining)}`;
 }
 
+function renderCalculators(els) {
+  const houses = Number(state.repairs.houses || 0);
+  const hotels = Number(state.repairs.hotels || 0);
+  const repairCost = houses * 250 + hotels * 1000;
+  const caught = Number(state.jailCaught || 0);
+  els.housesCount.textContent = String(houses);
+  els.hotelsCount.textContent = String(hotels);
+  els.repairCostTotal.textContent = money(repairCost);
+  els.caughtCount.textContent = String(caught);
+  els.caughtPenaltyTotal.textContent = money(caught * 1000);
+  els.caughtPenaltyNote.textContent = caught === 1 ? "($1,000 per catch)" : "($1,000 per catch)";
+}
+
 export function render(els) {
   applyTheme(els);
   els.gameClock.textContent = formatClock(state.gameElapsed);
+  els.clockMeta.textContent = formatClockMeta();
+  els.alertMuteButton.classList.toggle("is-muted", state.alertsMuted);
+  els.alertMuteButton.setAttribute("aria-pressed", String(state.alertsMuted));
+  els.alertMuteButton.setAttribute("aria-label", state.alertsMuted ? "Unmute timer sound" : "Mute timer sound");
+  els.alertMuteButton.querySelector(".utility-label").textContent = state.alertsMuted ? "Muted" : "Sound";
+  els.alertMuteButton.querySelector("[data-icon]").innerHTML = svgIcon(state.alertsMuted ? "volume-x" : "volume-2");
   els.toblTickets.checked = state.tickets.tobl;
   els.ccTickets.checked = state.tickets.cc;
-  els.drawerOutput.textContent = state.drawerMessage;
-  renderPlayers(els);
   TIMER_KEYS.forEach(renderTimer);
   renderLoans(els);
   renderNextAction(els);
   els.loanCount.textContent = `${state.loans.length} active loan${state.loans.length === 1 ? "" : "s"}`;
-  updateCalculators(els);
+  renderCalculators(els);
 }

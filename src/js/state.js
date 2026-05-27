@@ -5,7 +5,6 @@ function createTimerState() {
     lottery: { remaining: TIMER_CONFIG.lottery.duration, lastCompletedAt: null },
     voting: { remaining: TIMER_CONFIG.voting.duration, lastCompletedAt: null },
     propertyTax: { remaining: TIMER_CONFIG.propertyTax.duration, lastCompletedAt: null },
-    turn: { remaining: TIMER_CONFIG.turn.duration, running: false },
   };
 }
 
@@ -14,14 +13,13 @@ export function createInitialState() {
     running: false,
     startedAt: null,
     gameElapsed: 0,
-    theme: "classic",
+    alertsMuted: false,
     timers: createTimerState(),
     tickets: { tobl: false, cc: false },
-    players: [],
-    activePlayerIndex: -1,
     loans: [],
-    drawerMessage: "Add players to pick a drawer.",
     loanMessage: "",
+    repairs: { houses: 3, hotels: 1 },
+    jailCaught: 2,
   };
 }
 
@@ -36,11 +34,13 @@ export function loadState() {
       timers: {
         ...defaults.timers,
         ...saved.timers,
-        turn: { ...defaults.timers.turn, ...saved.timers?.turn, running: false },
       },
       tickets: { ...defaults.tickets, ...saved.tickets },
       running: false,
       startedAt: null,
+      alertsMuted: Boolean(saved.alertsMuted),
+      repairs: { ...defaults.repairs, ...saved.repairs },
+      jailCaught: Number.isFinite(saved.jailCaught) ? saved.jailCaught : defaults.jailCaught,
     });
   } catch {
     localStorage.removeItem(STORAGE_KEY);

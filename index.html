@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Matthew Opoly Timer Table</title>
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260527" />
   </head>
   <body>
     <main class="app-shell" id="appShell" data-theme="classic">
       <img class="table-die die-top" src="./assets/die-single.png" alt="" aria-hidden="true" />
-      <img class="table-die die-bottom-a" src="./assets/dice-pair.png" alt="" aria-hidden="true" />
-      <img class="table-die die-bottom-b" src="./assets/die-single.png" alt="" aria-hidden="true" />
+      <img class="table-die dice-bottom" src="./assets/dice-pair.png" alt="" aria-hidden="true" />
+      <div class="table-prop prop-hat" aria-hidden="true">♜</div>
+      <div class="table-prop prop-car" aria-hidden="true">▰</div>
+      <div class="table-prop prop-money" aria-hidden="true">$500</div>
+      <div class="table-prop prop-board-left" aria-hidden="true"></div>
+      <div class="table-prop prop-board-right" aria-hidden="true"></div>
 
       <header class="topbar">
         <section class="brand-block" aria-label="Game title">
@@ -20,27 +24,16 @@
             <h1>Matthew Opoly Timer Table</h1>
             <p>Custom Monopoly Add-On Timer Assistant</p>
           </div>
+          <span class="brand-token" aria-hidden="true">♜</span>
         </section>
 
         <section class="game-clock" aria-label="Game clock">
           <span class="clock-label">Game Clock</span>
-          <strong id="gameClock">00:00:00</strong>
-          <small>Today</small>
-        </section>
-
-        <section class="theme-switcher" aria-label="Theme options">
-          <span class="clock-label">Theme</span>
-          <div class="theme-options" id="themeButtons">
-            <button class="theme-button is-active" type="button" data-theme="classic" aria-pressed="true">
-              Classic
-            </button>
-            <button class="theme-button" type="button" data-theme="midnight" aria-pressed="false">
-              Midnight
-            </button>
-            <button class="theme-button" type="button" data-theme="tycoon" aria-pressed="false">
-              Tycoon
-            </button>
+          <div class="clock-readout">
+            <span data-icon="clock"></span>
+            <strong id="gameClock">00:00:00</strong>
           </div>
+          <small id="clockMeta">Today</small>
         </section>
 
         <nav class="top-actions" aria-label="Global timer controls">
@@ -57,119 +50,83 @@
             Reset
           </button>
         </nav>
+
+        <nav class="utility-actions" aria-label="Table tools">
+          <button class="utility-button" id="alertMuteButton" type="button" aria-label="Mute timer sound" aria-pressed="false">
+            <span data-icon="volume-2"></span>
+            <span class="utility-label">Sound</span>
+          </button>
+          <button class="utility-button" type="button" aria-label="Themes">
+            <span data-icon="palette"></span>
+            <span>Themes</span>
+          </button>
+          <button class="utility-button" id="rulesButton" type="button" aria-label="Rules">
+            <span data-icon="book-open"></span>
+            <span>Rules</span>
+          </button>
+        </nav>
       </header>
 
       <section class="board-surface">
         <section class="timer-ledger" aria-label="Repeating game timers">
-          <article class="timer-card timer-turn" data-timer-card="turn">
-            <div class="timer-focus">
-              <div class="timer-focus-title">
-                <h2>Turn Timer</h2>
-                <p>2 minutes per player turn</p>
-              </div>
-              <div class="progress-orb" id="turnOrb" style="--progress: 0deg">
-                <span id="turnTime">02:00</span>
-                <small id="turnState">Ready</small>
-              </div>
-            </div>
-            <div class="event-icon green">⏱</div>
-            <div class="timer-body">
-              <div class="timer-title-row timer-controls-row">
-                <div class="button-row turn-action-row">
-                  <button class="button primary" id="startTurnButton" type="button">
-                    <span data-icon="timer"></span>
-                    Start
-                  </button>
-                  <button class="button outline" id="nextTurnButton" type="button">
-                    <span data-icon="arrow-right"></span>
-                    Next
-                  </button>
-                  <button class="icon-button" id="resetTurnButton" type="button" aria-label="Reset turn timer">
-                    <span data-icon="rotate"></span>
-                  </button>
-                </div>
-              </div>
-              <div class="timer-divider"></div>
-              <div class="turn-ledger-grid">
-                <div>
-                  <span class="overline">Current Turn</span>
-                  <strong id="turnMirror">02:00</strong>
-                  <p class="rule-line">Start a 2 minute clock for each player. Use Next to pass the turn and reset the clock.</p>
-                </div>
-                <div class="turn-player-panel">
-                  <span class="panel-title">Players</span>
-                  <div class="inline-form">
-                    <input id="playerName" type="text" autocomplete="off" placeholder="Player name" />
-                    <button class="button compact" id="addPlayerButton" type="button">Add</button>
-                  </div>
-                  <div class="player-rail" id="playerRail" aria-label="Players"></div>
-                </div>
-              </div>
-            </div>
-          </article>
-
           <article class="timer-card timer-lottery" data-timer-card="lottery">
-            <div class="timer-focus">
-              <div class="timer-focus-title">
-                <h2>Lottery Drawings</h2>
-                <p>Every 10 minutes</p>
-              </div>
-              <div class="progress-orb" id="lotteryOrb" style="--progress: 0deg">
-                <span id="lotteryTime">10:00</span>
-                <small id="lotteryStatus">No tickets yet</small>
-              </div>
+            <div class="progress-orb" id="lotteryOrb" style="--progress: 0deg">
+              <span id="lotteryTime">10:00</span>
+              <small>of 10:00</small>
             </div>
-            <div class="event-icon">🎟</div>
+            <div class="event-icon" aria-hidden="true">$</div>
             <div class="timer-body">
-              <div class="timer-title-row timer-controls-row">
-                <button class="button outline" data-complete-timer="lottery" type="button">
-                  Mark Done
-                </button>
+              <div class="timer-title-row">
+                <div>
+                  <h2>Lottery Drawings</h2>
+                  <p>Every 10 minutes</p>
+                </div>
               </div>
               <div class="timer-divider"></div>
-              <div class="event-detail-grid">
-                <div>
-                  <span class="overline">Next Drawing In</span>
-                  <strong id="lotteryMirror">10:00</strong>
-                  <p class="rule-line">Draw only if someone has a ticket. TOBL uses 4 digits. Crazy Cash uses 8 digits.</p>
-                </div>
-                <div class="ticket-panel">
-                  <span class="panel-title">Ticket Pools</span>
-                  <label class="ticket-toggle">
-                    <span>TOBL 4-digit</span>
-                    <input id="toblTickets" type="checkbox" />
-                  </label>
-                  <label class="ticket-toggle">
-                    <span>Crazy Cash 8-digit</span>
-                    <input id="ccTickets" type="checkbox" />
-                  </label>
-                  <div class="chip-row">
-                    <span class="cash-chip">$250</span>
-                    <span class="cash-chip gold-chip">$1,000</span>
-                  </div>
-                  <button class="button compact" id="randomDrawerButton" type="button">Pick drawer</button>
-                  <output id="drawerOutput" class="soft-output">Add players to pick a drawer.</output>
-                </div>
-              </div>
+              <span class="overline">Next Drawing In</span>
+              <strong id="lotteryMirror">10:00</strong>
+              <p class="rule-line"><span></span>Draw only if someone has a ticket. TOBL uses 4 digits. Crazy Cash uses 8 digits.</p>
+              <small class="timer-status" id="lotteryStatus">No tickets yet</small>
             </div>
+            <aside class="ticket-panel" aria-label="Ticket pools">
+              <div class="panel-heading">
+                <span class="panel-title">Ticket Pools</span>
+                <span class="info-dot">i</span>
+              </div>
+              <label class="ticket-toggle">
+                <span>TOBL 4-digit</span>
+                <input id="toblTickets" type="checkbox" />
+              </label>
+              <label class="ticket-toggle">
+                <span>Crazy Cash 8-digit</span>
+                <input id="ccTickets" type="checkbox" />
+              </label>
+              <div class="panel-heading jackpot-heading">
+                <span class="panel-title">Jackpot Amounts</span>
+                <span class="info-dot">i</span>
+              </div>
+              <div class="chip-row">
+                <span class="cash-chip">$250</span>
+                <span class="cash-chip gold-chip">$1,000</span>
+              </div>
+            </aside>
           </article>
 
           <article class="timer-card timer-voting" data-timer-card="voting">
-            <div class="timer-focus">
-              <div class="timer-focus-title">
-                <h2>Voting</h2>
-                <p>Every 10 minutes</p>
-              </div>
-              <div class="progress-orb" id="votingOrb" style="--progress: 0deg">
-                <span id="votingTime">10:00</span>
-                <small id="votingStatus">Ready</small>
-              </div>
+            <div class="progress-orb" id="votingOrb" style="--progress: 0deg">
+              <span id="votingTime">10:00</span>
+              <small>of 10:00</small>
             </div>
-            <div class="event-icon purple">👥</div>
+            <div class="event-icon purple" aria-hidden="true">●●●</div>
             <div class="timer-body">
-              <div class="timer-title-row timer-controls-row">
+              <div class="timer-title-row">
+                <div>
+                  <h2>Voting</h2>
+                  <p>Every 10 minutes</p>
+                </div>
                 <button class="button outline purple-outline" data-complete-timer="voting" type="button">
-                  Mark Vote Done
+                  <span data-icon="check-circle"></span>
+                  Skip / Mark Done
                 </button>
               </div>
               <div class="timer-divider"></div>
@@ -179,36 +136,37 @@
                 <li>Only speak if voting for someone else.</li>
                 <li>Ties mean nothing changes.</li>
               </ul>
+              <small class="timer-status" id="votingStatus">Ready</small>
             </div>
           </article>
 
           <article class="timer-card timer-tax" data-timer-card="propertyTax">
-            <div class="timer-focus">
-              <div class="timer-focus-title">
-                <h2>Property Tax</h2>
-                <p>Every 15 minutes</p>
-              </div>
-              <div class="progress-orb" id="propertyTaxOrb" style="--progress: 0deg">
-                <span id="propertyTaxTime">15:00</span>
-                <small id="propertyTaxStatus">Ready</small>
-              </div>
+            <div class="progress-orb" id="propertyTaxOrb" style="--progress: 0deg">
+              <span id="propertyTaxTime">15:00</span>
+              <small>of 15:00</small>
             </div>
-            <div class="event-icon blue">🏛</div>
+            <div class="event-icon blue" aria-hidden="true">♜</div>
             <div class="timer-body">
-              <div class="timer-title-row timer-controls-row">
+              <div class="timer-title-row">
+                <div>
+                  <h2>Property Tax</h2>
+                  <p>Every 15 minutes</p>
+                </div>
                 <button class="button outline blue-outline" data-complete-timer="propertyTax" type="button">
-                  Mark Taxes Paid
+                  <span data-icon="check-circle"></span>
+                  Skip / Mark Done
                 </button>
               </div>
               <div class="timer-divider"></div>
               <span class="overline">Next Property Tax In</span>
               <strong id="propertyTaxMirror">15:00</strong>
-              <p class="rule-line">Bank-president caps: $25 per property, $25 per house, and $125 per hotel.</p>
+              <p class="rule-line"><span></span>Bank-president caps: $25 per property, $25 per house, and $125 per hotel.</p>
               <div class="tax-split">
                 <span>President 50%</span>
                 <span>Governor 35%</span>
                 <span>Mayor 15%</span>
               </div>
+              <small class="timer-status" id="propertyTaxStatus">Ready</small>
             </div>
           </article>
         </section>
@@ -216,7 +174,7 @@
         <aside class="loan-panel" aria-label="Loans">
           <div class="section-heading">
             <div>
-              <span class="loan-icon">🏦</span>
+              <span class="loan-icon" aria-hidden="true">♜</span>
               <h2>Active Loan Timers</h2>
               <p>Pay bank loans back within 1 hour.</p>
             </div>
@@ -233,73 +191,107 @@
             </label>
             <label>
               Amount ($)
-              <input id="loanAmount" type="number" min="1" step="1" placeholder="500" autocomplete="off" required />
+              <input id="loanAmount" type="number" min="1" step="1" placeholder="0.00" autocomplete="off" required />
+            </label>
+            <label class="switch-field">
+              Starts Now
+              <span class="toggle-rail" aria-hidden="true"></span>
             </label>
             <button class="button primary" type="submit">
-              <span data-icon="plus"></span>
+              <span data-icon="plus-circle"></span>
               Add Loan
             </button>
           </form>
-
-          <section class="loan-helper" aria-label="Loan helper">
-            <div>
-              <h3>Bank Loan Rules</h3>
-              <ul>
-                <li>5% interest.</li>
-                <li>1 hour to repay.</li>
-                <li>No second bank loan until repaid.</li>
-                <li>Missed bank deadline means bankruptcy.</li>
-                <li>Player loans and donations stay off this clock.</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Payoff Cheat Sheet</h3>
-              <div class="payoff-grid">
-                <span>$100 → $105</span>
-                <span>$200 → $210</span>
-                <span>$500 → $525</span>
-                <span>$1,000 → $1,050</span>
-                <span>$2,000 → $2,100</span>
-                <span>$5,000 → $5,250</span>
-              </div>
-            </div>
-          </section>
         </aside>
 
         <section class="bottom-tools" aria-label="Calculators and notes">
-          <article class="tool-card">
+          <article class="tool-card repair-card">
             <div class="tool-heading">
-              <span class="tool-icon">▥</span>
-              <h2>Jail Caught Penalty</h2>
+              <span class="tool-icon green-tool" aria-hidden="true">◆</span>
+              <h2>Street Repairs Calculator</h2>
+              <span class="info-dot">i</span>
             </div>
-            <label>Defraud money collected<input id="defraudAmount" type="number" min="0" value="0" /></label>
-            <output id="caughtTotal">Return $0, jail bailout is $0</output>
+            <div class="counter-grid">
+              <span class="counter-label house-label">Houses</span>
+              <div class="counter-control" aria-label="Houses">
+                <button type="button" data-adjust-repair="houses" data-delta="-1">−</button>
+                <strong id="housesCount">3</strong>
+                <button type="button" data-adjust-repair="houses" data-delta="1">+</button>
+              </div>
+              <span class="counter-label hotel-label">Hotels</span>
+              <div class="counter-control red-control" aria-label="Hotels">
+                <button type="button" data-adjust-repair="hotels" data-delta="-1">−</button>
+                <strong id="hotelsCount">1</strong>
+                <button type="button" data-adjust-repair="hotels" data-delta="1">+</button>
+              </div>
+            </div>
+            <div class="tool-result">
+              <span>Repair Cost</span>
+              <strong id="repairCostTotal">$1,250</strong>
+              <small>($250 per house, $1,000 per hotel)</small>
+            </div>
           </article>
 
-          <article class="tool-card notes-card">
+          <article class="tool-card jail-card">
             <div class="tool-heading">
-              <span class="tool-icon">📌</span>
+              <span class="tool-icon gold-tool" aria-hidden="true">▥</span>
+              <h2>Jail Caught Penalty</h2>
+              <span class="info-dot">i</span>
+            </div>
+            <div class="jail-layout">
+              <div>
+                <span class="counter-label">Times Caught</span>
+                <div class="counter-control" aria-label="Times caught">
+                  <button type="button" data-adjust-caught="-1">−</button>
+                  <strong id="caughtCount">2</strong>
+                  <button type="button" data-adjust-caught="1">+</button>
+                </div>
+              </div>
+              <div class="tool-result red-result">
+                <span>Total Penalty</span>
+                <strong id="caughtPenaltyTotal">$2,000</strong>
+                <small id="caughtPenaltyNote">($1,000 per catch)</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card notes-card" id="rulesPanel">
+            <div class="tool-heading">
+              <span class="tool-icon dark-tool" aria-hidden="true">◆</span>
               <h2>Quick Rule Notes</h2>
             </div>
             <div class="notes-grid">
-              <span>All global timers run when Start is on.</span>
-              <span>Lottery draws only happen if tickets exist.</span>
-              <span>Loans accrue 5% interest.</span>
-              <span id="nextAction">Start the table clock</span>
-              <span id="loanCount">0 active loans</span>
-              <span id="currentTurnLabel">No player selected</span>
+              <span>All timers run continuously in real time.</span>
+              <span>Property Tax uses the house rule caps.</span>
+              <span>Skip / Mark Done resets the interval.</span>
+              <span>Late loans may be subject to house rules.</span>
+              <span>Loans accrue 5% interest until repaid.</span>
+              <span>Have fun and play fair.</span>
             </div>
-            <div class="space-tax">
-              <h3>Space Tax</h3>
-              <div class="calc-grid">
-                <label>Spaces<input id="taxSpaces" type="number" min="0" value="1" /></label>
-                <label>Rate<input id="taxRate" type="number" min="0" max="10" value="2" /></label>
-              </div>
-              <output id="spaceTaxTotal">$2 total tax</output>
+            <span class="sr-only" id="nextAction">Start the table clock</span>
+            <span class="sr-only" id="loanCount">0 active loans</span>
+            <div class="mascot" aria-hidden="true">
+              <span class="mascot-hat">▔</span>
+              <span class="mascot-head"></span>
+              <span class="mascot-body"></span>
+              <span class="mascot-cane"></span>
             </div>
           </article>
         </section>
       </section>
+
+      <footer class="table-footer">
+        <div class="footer-copy">
+          <strong>Built for epic game nights.</strong>
+          <span>Play sharp. Play fair. Play <b>Matthew Opoly.</b></span>
+        </div>
+        <nav class="footer-actions" aria-label="Session actions">
+          <button type="button"><span data-icon="download"></span> Export Log</button>
+          <button type="button"><span data-icon="history"></span> View History</button>
+          <button type="button"><span data-icon="settings"></span> Game Settings</button>
+        </nav>
+        <span class="version-pill">Version 1.0.0</span>
+      </footer>
     </main>
 
     <script type="module" src="./app.js"></script>

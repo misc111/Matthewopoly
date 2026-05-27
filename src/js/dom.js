@@ -1,16 +1,12 @@
 const ELEMENT_IDS = [
   "appShell",
   "gameClock",
+  "clockMeta",
+  "alertMuteButton",
   "nextAction",
   "loanCount",
-  "currentTurnLabel",
-  "turnTime",
-  "turnState",
-  "playerName",
-  "playerRail",
   "toblTickets",
   "ccTickets",
-  "drawerOutput",
   "lotteryTime",
   "lotteryStatus",
   "votingTime",
@@ -21,12 +17,12 @@ const ELEMENT_IDS = [
   "loanPlayer",
   "loanAmount",
   "loanList",
-  "defraudAmount",
-  "caughtTotal",
-  "taxSpaces",
-  "taxRate",
-  "spaceTaxTotal",
-  "themeButtons",
+  "housesCount",
+  "hotelsCount",
+  "repairCostTotal",
+  "caughtCount",
+  "caughtPenaltyTotal",
+  "caughtPenaltyNote",
 ];
 
 export function byId(id) {
@@ -41,7 +37,6 @@ export function cacheElements() {
 }
 
 export function clearTransientForms(els) {
-  els.playerName.value = "";
   els.loanForm.reset();
   els.loanPlayer.value = "";
   els.loanAmount.value = "";

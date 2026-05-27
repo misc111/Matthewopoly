@@ -1,5 +1,6 @@
 import { SECOND } from "./src/js/config.js";
 import { tick } from "./src/js/actions.js";
+import { installAlertUnlock, playDueAlert } from "./src/js/alerts.js";
 import { cacheElements, clearTransientForms } from "./src/js/dom.js";
 import { bindEvents } from "./src/js/events.js";
 import { installIcons } from "./src/js/icons.js";
@@ -20,10 +21,12 @@ function persistAndRender() {
 installIcons();
 loadState();
 clearTransientForms(els);
+installAlertUnlock();
 bindEvents(els, persistAndRender, renderOnly);
 renderOnly();
 
 setInterval(() => {
-  tick();
+  const dueTimers = tick();
+  playDueAlert(dueTimers);
   persistAndRender();
 }, SECOND);

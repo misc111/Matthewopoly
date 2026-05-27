@@ -1,17 +1,13 @@
 import {
   addLoan,
-  addPlayer,
+  adjustJailCaught,
+  adjustRepair,
   clearLoan,
   completeTimer,
-  nextTurn,
-  pickDrawer,
   resetAll,
-  resetTimer,
-  selectPlayer,
+  setAlertsMuted,
   setRunning,
-  setTheme,
   setTicket,
-  startTurn,
 } from "./actions.js";
 
 export function bindEvents(els, afterChange, renderOnly) {
@@ -26,39 +22,10 @@ export function bindEvents(els, afterChange, renderOnly) {
   document.getElementById("resetAllButton").addEventListener("click", () => {
     resetAll();
     els.loanForm.reset();
-    els.playerName.value = "";
     afterChange();
   });
-  document.getElementById("addPlayerButton").addEventListener("click", () => {
-    if (addPlayer(els.playerName.value)) els.playerName.value = "";
-    afterChange();
-  });
-  els.playerName.addEventListener("keydown", (event) => {
-    if (event.key !== "Enter") return;
-    if (addPlayer(els.playerName.value)) els.playerName.value = "";
-    afterChange();
-  });
-  document.getElementById("startTurnButton").addEventListener("click", () => {
-    startTurn(els.playerName.value);
-    els.playerName.value = "";
-    afterChange();
-  });
-  document.getElementById("nextTurnButton").addEventListener("click", () => {
-    nextTurn();
-    afterChange();
-  });
-  document.getElementById("resetTurnButton").addEventListener("click", () => {
-    resetTimer("turn");
-    afterChange();
-  });
-  document.getElementById("randomDrawerButton").addEventListener("click", () => {
-    pickDrawer();
-    afterChange();
-  });
-  els.playerRail.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-player-index]");
-    if (!button) return;
-    selectPlayer(Number(button.dataset.playerIndex));
+  els.alertMuteButton.addEventListener("click", () => {
+    setAlertsMuted(els.alertMuteButton.getAttribute("aria-pressed") !== "true");
     afterChange();
   });
   els.loanForm.addEventListener("submit", (event) => {
@@ -86,13 +53,19 @@ export function bindEvents(els, afterChange, renderOnly) {
     setTicket("cc", els.ccTickets.checked);
     afterChange();
   });
-  els.themeButtons.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-theme]");
-    if (!button) return;
-    setTheme(button.dataset.theme);
-    afterChange();
+  document.querySelectorAll("[data-adjust-repair]").forEach((button) => {
+    button.addEventListener("click", () => {
+      adjustRepair(button.dataset.adjustRepair, Number(button.dataset.delta));
+      afterChange();
+    });
   });
-  ["defraudAmount", "taxSpaces", "taxRate"].forEach((id) => {
-    els[id].addEventListener("input", renderOnly);
+  document.querySelectorAll("[data-adjust-caught]").forEach((button) => {
+    button.addEventListener("click", () => {
+      adjustJailCaught(Number(button.dataset.adjustCaught));
+      afterChange();
+    });
+  });
+  document.getElementById("rulesButton").addEventListener("click", () => {
+    document.getElementById("rulesPanel").scrollIntoView({ behavior: "smooth", block: "nearest" });
   });
 }
