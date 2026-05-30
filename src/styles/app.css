@@ -148,17 +148,19 @@ p {
 }
 
 .asset-money-hat {
-  left: -26px;
-  bottom: 8px;
-  width: 214px;
-  transform: rotate(-11deg);
+  left: 0;
+  bottom: 0;
+  width: 260px;
+  z-index: 2;
+  transform: none;
 }
 
 .asset-dice-bottom {
-  right: -28px;
-  bottom: 18px;
-  width: 244px;
-  transform: rotate(5deg);
+  right: 0;
+  bottom: 0;
+  width: 286px;
+  z-index: 2;
+  transform: none;
 }
 
 .table-die {
