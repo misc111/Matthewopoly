@@ -117,10 +117,11 @@ p {
 }
 
 .asset-die-top {
-  top: -31px;
-  left: -48px;
-  width: 124px;
-  transform: rotate(-12deg);
+  top: 4px;
+  left: -6px;
+  width: 86px;
+  transform: none;
+  filter: drop-shadow(0 7px 8px rgba(0, 0, 0, 0.38));
 }
 
 .asset-car-top {
