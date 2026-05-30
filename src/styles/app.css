@@ -130,6 +130,7 @@ p {
   width: 151px;
   transform: none;
   z-index: 8;
+  filter: drop-shadow(0 7px 7px rgba(0, 0, 0, 0.34));
 }
 
 .asset-board-left {
