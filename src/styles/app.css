@@ -135,10 +135,10 @@ p {
 }
 
 .asset-board-left {
-  left: -62px;
-  top: 132px;
-  width: 150px;
-  transform: rotate(-4deg);
+  left: -22px;
+  top: 95px;
+  width: 118px;
+  transform: none;
 }
 
 .asset-board-right {
