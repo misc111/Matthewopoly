@@ -143,8 +143,8 @@ p {
 
 .asset-board-right {
   right: 0;
-  top: 104px;
-  width: 106px;
+  top: 90px;
+  width: 54px;
   clip-path: none;
   transform: none;
 }
@@ -1655,7 +1655,7 @@ input:focus {
   .asset-board-right {
     top: 170px;
     right: 0;
-    width: 106px;
+    width: 54px;
     clip-path: none;
   }
 
