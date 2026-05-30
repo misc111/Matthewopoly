@@ -125,10 +125,10 @@ p {
 
 .asset-car-top {
   display: block;
-  top: -28px;
-  right: 10px;
-  width: 132px;
-  transform: rotate(-11deg);
+  top: 0;
+  right: 0;
+  width: 151px;
+  transform: none;
   z-index: 8;
 }
 
@@ -140,11 +140,11 @@ p {
 }
 
 .asset-board-right {
-  right: -10px;
-  top: 30px;
-  width: 150px;
-  clip-path: inset(76px 0 0 0);
-  transform: rotate(3deg);
+  right: 0;
+  top: 104px;
+  width: 106px;
+  clip-path: none;
+  transform: none;
 }
 
 .asset-money-hat {
@@ -1664,9 +1664,9 @@ input:focus {
 
   .asset-board-right {
     top: 170px;
-    right: -98px;
-    width: 178px;
-    clip-path: inset(92px 0 0 0);
+    right: 0;
+    width: 106px;
+    clip-path: none;
   }
 
   .asset-car-top {
