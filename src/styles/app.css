@@ -1138,6 +1138,10 @@ p {
   text-transform: uppercase;
 }
 
+.mobile-add-loan-button {
+  display: none;
+}
+
 label {
   display: grid;
   gap: 6px;
@@ -1561,7 +1565,6 @@ input:focus {
   .topbar,
   .timer-title-row,
   .loan-card,
-  .loan-form,
   .bottom-tools,
   .repair-card,
   .jail-layout,
@@ -1805,6 +1808,19 @@ input:focus {
 
   .ticket-panel {
     width: 100%;
+  }
+
+  .loan-form {
+    display: none;
+  }
+
+  .mobile-add-loan-button {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 58px;
+    border-radius: 7px;
+    font-size: 1.05rem;
   }
 
   .bottom-tools {
