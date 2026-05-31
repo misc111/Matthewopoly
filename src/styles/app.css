@@ -1568,7 +1568,7 @@ input:focus {
 
   .topbar {
     gap: 10px;
-    padding: 64px 10px 12px;
+    padding: 28px 10px 12px;
     border-bottom-color: rgba(216, 169, 76, 0.72);
   }
 
@@ -1627,6 +1627,36 @@ input:focus {
     gap: 5px;
     margin-right: 18px;
     padding: 8px;
+  }
+
+  .game-clock {
+    justify-self: center;
+    width: min(100%, calc(100vw - 92px));
+    min-height: 164px;
+    gap: 10px;
+    padding: 18px 22px;
+    border-radius: 10px;
+  }
+
+  .clock-label {
+    font-size: 0.9rem;
+  }
+
+  .clock-readout {
+    gap: 0;
+  }
+
+  .clock-readout [data-icon] {
+    display: none;
+  }
+
+  .game-clock strong {
+    font-size: clamp(4rem, 14vw, 5.4rem);
+    letter-spacing: 0;
+  }
+
+  .game-clock small {
+    font-size: 1.08rem;
   }
 
   .top-actions {
