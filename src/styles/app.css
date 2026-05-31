@@ -1332,7 +1332,7 @@ input:focus {
 }
 
 .notes-card {
-  padding-right: 142px;
+  padding-right: 158px;
 }
 
 .notes-grid {
@@ -1368,9 +1368,9 @@ input:focus {
 .mascot {
   position: absolute;
   right: 8px;
-  bottom: -16px;
-  width: 100px;
-  height: 150px;
+  bottom: -8px;
+  width: 138px;
+  height: 143px;
 }
 
 .mascot img {
