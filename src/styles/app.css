@@ -1574,8 +1574,8 @@ input:focus {
   }
 
   .topbar {
-    gap: 10px;
-    padding: 28px 10px 12px;
+    gap: 14px;
+    padding: 22px 24px 16px;
     border-bottom-color: rgba(216, 169, 76, 0.72);
   }
 
@@ -1588,28 +1588,29 @@ input:focus {
   }
 
   .brand-block {
-    grid-template-columns: 72px minmax(0, 1fr) 44px;
-    gap: 10px;
+    grid-template-columns: 112px minmax(0, 1fr) 58px;
+    gap: 18px;
     align-items: center;
-    min-height: 78px;
+    min-height: 118px;
   }
 
   .monogram {
-    width: 72px;
-    height: 72px;
-    font-size: 3rem;
+    width: 108px;
+    height: 108px;
+    font-size: 4.35rem;
   }
 
   .brand-block h1 {
     max-width: calc(100vw - 56px);
-    font-size: 1.56rem;
-    line-height: 1.08;
+    font-size: clamp(2.35rem, 6.2vw, 3rem);
+    line-height: 1.02;
     overflow-wrap: anywhere;
   }
 
   .brand-block p {
+    margin-top: 8px;
     max-width: calc(100vw - 56px);
-    font-size: 1rem;
+    font-size: clamp(1.18rem, 3vw, 1.52rem);
   }
 
   .desktop-title-extra,
@@ -1631,9 +1632,14 @@ input:focus {
   .mobile-menu-button {
     justify-self: end;
     flex-direction: column;
-    gap: 5px;
-    margin-right: 18px;
-    padding: 8px;
+    gap: 7px;
+    margin-right: 8px;
+    padding: 10px 6px;
+  }
+
+  .mobile-menu-button span {
+    width: 43px;
+    height: 6px;
   }
 
   .game-clock {
@@ -1895,5 +1901,43 @@ input:focus {
 
   .table-footer {
     padding: 8px 90px 0 10px;
+  }
+}
+
+@media (max-width: 520px) {
+  .topbar {
+    padding: 18px 12px 14px;
+  }
+
+  .brand-block {
+    grid-template-columns: 84px minmax(0, 1fr) 42px;
+    gap: 10px;
+    min-height: 92px;
+  }
+
+  .monogram {
+    width: 84px;
+    height: 84px;
+    font-size: 3.4rem;
+  }
+
+  .brand-block h1 {
+    font-size: 1.85rem;
+  }
+
+  .brand-block p {
+    margin-top: 5px;
+    font-size: 1.08rem;
+  }
+
+  .mobile-menu-button {
+    gap: 5px;
+    margin-right: 2px;
+    padding: 8px 4px;
+  }
+
+  .mobile-menu-button span {
+    width: 32px;
+    height: 5px;
   }
 }
