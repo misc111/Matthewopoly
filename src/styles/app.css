@@ -270,7 +270,7 @@ p {
   width: 96px;
   height: 96px;
   place-items: center;
-  background: url("../../assets/props/monogram.png?v=20260530l") center / contain no-repeat;
+  background: url("../../assets/props/monogram.png?v=20260530n") center / contain no-repeat;
   filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.3));
 }
 
