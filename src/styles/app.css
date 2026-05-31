@@ -1720,8 +1720,8 @@ input:focus {
   }
 
   .timer-ledger {
-    gap: 8px;
-    padding: 10px;
+    gap: 10px;
+    padding: 12px;
     width: 100%;
     min-width: 0;
   }
@@ -1729,14 +1729,14 @@ input:focus {
   .timer-card {
     position: relative;
     display: grid;
-    grid-template-columns: 84px 36px minmax(0, 1fr) 12px;
-    gap: 6px;
+    grid-template-columns: 204px 72px minmax(0, 1fr) 24px;
+    gap: 18px;
     align-items: center;
-    min-height: 136px;
-    padding: 14px 10px;
+    min-height: 225px;
+    padding: 20px 28px;
     border: 1px solid rgba(74, 55, 25, 0.18);
-    border-radius: var(--radius);
-    background: rgba(255, 253, 246, 0.78);
+    border-radius: 14px;
+    background: rgba(255, 253, 246, 0.92);
     width: 100%;
     min-width: 0;
   }
@@ -1749,20 +1749,21 @@ input:focus {
     color: #10271d;
     content: "›";
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 2.35rem;
+    font-size: 3.1rem;
     font-weight: 900;
     line-height: 1;
   }
 
   .timer-card .event-icon {
-    margin-top: 0;
-    width: 36px;
-    height: 36px;
+    align-self: start;
+    margin-top: 26px;
+    width: 70px;
+    height: 70px;
   }
 
   .timer-card .event-icon [data-icon] {
-    width: 19px;
-    height: 19px;
+    width: 38px;
+    height: 38px;
   }
 
   .timer-card:not(.timer-lottery) .timer-body {
@@ -1770,39 +1771,56 @@ input:focus {
   }
 
   .progress-orb {
-    width: 84px;
+    width: 196px;
     justify-self: center;
   }
 
   .progress-orb span {
-    font-size: 1.36rem;
+    font-size: 3rem;
   }
 
   .progress-orb small {
-    margin-top: 4px;
-    font-size: 0.66rem;
+    margin-top: 7px;
+    font-size: 1.08rem;
   }
 
   .progress-orb::after {
-    left: 7px;
-    bottom: 16px;
+    left: 18px;
+    bottom: 38px;
   }
 
   .timer-tax .progress-orb {
-    width: 84px;
+    width: 196px;
     margin-top: 0;
   }
 
+  .timer-tax .progress-orb span {
+    font-size: 3rem;
+  }
+
+  .timer-tax .progress-orb small {
+    font-size: 1.08rem;
+  }
+
+  .timer-tax .progress-orb::after {
+    left: 18px;
+    bottom: 38px;
+  }
+
   .timer-body h2 {
-    font-size: 0.96rem;
+    font-size: 2.22rem;
+  }
+
+  .timer-body p {
+    font-size: 1.22rem;
   }
 
   .timer-divider {
-    margin: 8px 0 7px;
+    margin: 16px 0 12px;
   }
 
   .timer-body .overline {
-    font-size: 0.66rem;
+    font-size: 1rem;
     white-space: nowrap;
   }
 
@@ -1810,7 +1828,7 @@ input:focus {
   #lotteryMirror,
   #votingMirror,
   #propertyTaxMirror {
-    font-size: 1.88rem;
+    font-size: 3.15rem;
   }
 
   .timer-card .button,
@@ -1963,5 +1981,79 @@ input:focus {
   .top-actions .button [data-icon] {
     width: 22px;
     height: 22px;
+  }
+
+  .timer-ledger {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .timer-card {
+    grid-template-columns: 84px 36px minmax(0, 1fr) 12px;
+    gap: 6px;
+    min-height: 136px;
+    padding: 14px 10px;
+    border-radius: var(--radius);
+    background: rgba(255, 253, 246, 0.78);
+  }
+
+  .timer-card::after {
+    font-size: 2.35rem;
+  }
+
+  .timer-card .event-icon {
+    margin-top: 0;
+    width: 36px;
+    height: 36px;
+  }
+
+  .timer-card .event-icon [data-icon] {
+    width: 19px;
+    height: 19px;
+  }
+
+  .progress-orb,
+  .timer-tax .progress-orb {
+    width: 84px;
+  }
+
+  .progress-orb span,
+  .timer-tax .progress-orb span {
+    font-size: 1.36rem;
+  }
+
+  .progress-orb small,
+  .timer-tax .progress-orb small {
+    margin-top: 4px;
+    font-size: 0.66rem;
+  }
+
+  .progress-orb::after,
+  .timer-tax .progress-orb::after {
+    left: 7px;
+    bottom: 16px;
+  }
+
+  .timer-body h2 {
+    font-size: 0.96rem;
+  }
+
+  .timer-body p {
+    font-size: 0.84rem;
+  }
+
+  .timer-divider {
+    margin: 8px 0 7px;
+  }
+
+  .timer-body .overline {
+    font-size: 0.66rem;
+  }
+
+  .timer-body > strong,
+  #lotteryMirror,
+  #votingMirror,
+  #propertyTaxMirror {
+    font-size: 1.88rem;
   }
 }
