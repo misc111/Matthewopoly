@@ -1674,8 +1674,10 @@ input:focus {
 
   .top-actions {
     flex-wrap: wrap;
+    justify-self: center;
     justify-content: stretch;
-    width: calc(100vw - 56px);
+    gap: 18px;
+    width: min(100%, 680px);
     max-width: 100%;
     padding-right: 0;
     border-right: 0;
@@ -1692,10 +1694,15 @@ input:focus {
   }
 
   .top-actions .button {
-    gap: 7px;
-    min-height: 50px;
-    padding: 0 8px;
-    font-size: 0.82rem;
+    gap: 12px;
+    min-height: 72px;
+    padding: 0 16px;
+    font-size: 1.08rem;
+  }
+
+  .top-actions .button [data-icon] {
+    width: 30px;
+    height: 30px;
   }
 
   .asset-board-right {
@@ -1939,5 +1946,22 @@ input:focus {
   .mobile-menu-button span {
     width: 32px;
     height: 5px;
+  }
+
+  .top-actions {
+    gap: 8px;
+    width: calc(100vw - 56px);
+  }
+
+  .top-actions .button {
+    gap: 7px;
+    min-height: 54px;
+    padding: 0 8px;
+    font-size: 0.86rem;
+  }
+
+  .top-actions .button [data-icon] {
+    width: 22px;
+    height: 22px;
   }
 }
