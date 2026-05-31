@@ -1629,14 +1629,17 @@ input:focus {
     padding: 8px;
   }
 
-  .top-actions,
-  .utility-actions {
+  .top-actions {
     flex-wrap: wrap;
     justify-content: stretch;
     width: calc(100vw - 56px);
     max-width: 100%;
     padding-right: 0;
     border-right: 0;
+  }
+
+  .utility-actions {
+    display: none;
   }
 
   .top-actions .button,
